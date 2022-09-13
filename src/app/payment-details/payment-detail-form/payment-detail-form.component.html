@@ -1,0 +1,40 @@
+<form novalidate autocomplete="off" #form="ngForm" (submit)="onSubmit(form)">
+    <!-- local reference for form -->
+    <!-- disable default validation -->
+    <input type="hidden" name="id" [value]="service.formData.id" />
+    <div class="form-group">
+        <label>CARD OWNER NAME</label>
+        <input class="form-control form-control-lg" placeholder="Full Name" name="cardOwnerName"
+            #cardOwnerName="ngModel" [(ngModel)]="service.formData.cardOwnerName" required
+            [class.invalid]="cardOwnerName.invalid && cardOwnerName.touched">
+        <!-- two way data binding every visible input field -->
+        <!-- invalid or touch it's show error -->
+    </div>
+    <div class="form-group">
+        <label>CARD NUMBER</label>
+        <input class="form-control form-control-lg" placeholder="16 Digit Card Number" name="cardNumber"
+            #cardNumber="ngModel" [(ngModel)]="service.formData.cardNumber" maxlength="16" minlength="16" required
+            [class.invalid]="cardNumber.invalid && cardNumber.touched">
+        <!-- two way data binding every visible input field -->
+    </div>
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label>SECURITY CODE</label>
+            <input class="form-control form-control-lg" placeholder="Security Code" name="securityCode"
+                #securityCode="ngModel" [(ngModel)]="service.formData.securityCode" maxlength="3" minlength="3" required
+                [class.invalid]="securityCode.invalid && securityCode.touched">
+            <!-- two way data binding every visible input field -->
+        </div>
+        <div class="form-group col-md-6">
+            <label>VALID THROUGH</label>
+            <input class="form-control form-control-lg" placeholder="MM/YY" name="expirationDate"
+                #expirationDate="ngModel" [(ngModel)]="service.formData.expirationDate" required
+                [class.invalid]="expirationDate.invalid && expirationDate.touched">
+            <!-- two way data binding every visible input field -->
+        </div>
+    </div>
+    <div class="from-group mt-2">
+        <button type="submit" class="btn btn-info btn-lg btn-block col-12 text-white"
+            >Submit</button>
+    </div>
+</form>
